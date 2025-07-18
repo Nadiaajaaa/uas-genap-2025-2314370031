@@ -1,33 +1,21 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "public/index.php",
-      "use": "@vercel/php"
+      "rewrites": [
+        {
+          "source": "/(.*)",
+          "destination": "/api/index.php"
+        }
+      ],
+      "functions": {
+        "api/index.php": {
+          "runtime": "php-8.0"
+        }
+      },
+       "routes": [
+          {
+            "src": "/(.*)",
+            "dest": "/public/$1"
+          }
+      ],
+      "buildCommand": "composer install && npm install && npm run prod",
+      "outputDirectory": "public"
     }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/public/index.php"
-    }
-  ],
-
-
-    "env": {
-        "APP_ENV": "production",
-        "APP_DEBUG": "true",
-        "APP_URL": "https://nama-proyek-anda.vercel.app",
-        "APP_KEY":"base64:dxZ2tviU2x1XSlfVYzvDvCrtHQILAHPkx/9THvWDCto=:",
-        "DB_CONNECTION": "pgsql",
-        "DB_HOST": "aws-0-ap-southeast-1.pooler.supabase.com",
-        "DB_PORT": "6543",
-        "DB_DATABASE": "postgres",
-        "DB_USERNAME": "postgres.dlzvcatevayzjdzhoino",
-        "DB_PASSWORD": "f59eWU6mG6CRIzcg",
-        "SESSION_DRIVER": "file",
-        "CACHE_DRIVER": "file",
-        "LOG_CHANNEL": "stderr",
-        "SESSION_LIFETIME": "120"
-    }
-}
