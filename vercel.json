@@ -1,21 +1,19 @@
 {
-      "rewrites": [
-        {
-          "source": "/(.*)",
-          "destination": "/api/index.php"
-        }
-      ],
-      "functions": {
-        "api/index.php": {
-          "runtime": "php-8.0"
-        }
-      },
-       "routes": [
-          {
-            "src": "/(.*)",
-            "dest": "/public/$1"
-          }
-      ],
-      "buildCommand": "composer install && npm install && npm run prod",
-      "outputDirectory": "public"
+  "version": 2,
+  "builds": [
+    {
+      "src": "public/index.php",
+      "use": "vercel-php@0.6.0"
     }
+  ],
+  "routes": [
+    {
+      "src": "/(css|js|images|fonts|favicon.ico|build)/(.*)",
+      "dest": "/public/$1/$2"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/public/index.php"
+    }
+  ]
+}
