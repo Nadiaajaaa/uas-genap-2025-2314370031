@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-use App\Models\Category;
+use App\Models\product;
+use App\Models\category;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -23,9 +23,9 @@ class ProductController extends Controller
     }
 
     public function show(Product $product)
-{
-    return view('products.show', compact('product'));
-}
+    {
+        return view('products.show', compact('product'));
+    }
 
     public function store(Request $request): RedirectResponse
     {
